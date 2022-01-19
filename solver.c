@@ -119,5 +119,25 @@ int	solve_map(tmap *map, t_piece *piece, int map_size)
 	return (0);
 }
 
+/*
+ * main function of solver.c
+ * Min size of map: square root of nb of '#' (pieces*4)
+ * Uses solve_map, and if no solution, increases map size by 1.
+*/
 
+void	solve(t_piece *piecelist)
+{
+	t_map	*map
+	int	map_size;
 
+	map_size = round_up_sq_rt(count_pieces(piecelist) * 4);
+	map = new_map(map_size);
+	while (!solve_map(map, piece, map_size))
+	{
+		free_map(map, map_size);
+		map_size++;
+		map = new_map(map_size);
+	}
+	print_map(map, map_size);
+	free_map(map, map_size);
+}

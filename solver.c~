@@ -85,6 +85,13 @@ void	place(t_piece *piece, t_map *map, char letter)
 	}
 }
 
+/*
+ * The function that tests each tetrimino at top left position is in bounds or overlap.
+ * If all is good, goes to next tetrimino. 
+ * If a check fails, it comes back one loop before, to try another position.
+ * Or if all positions fail for that piece, the previous piece at another place
+*/
+
 int	solve_map(tmap *map, t_piece *piece, int map_size)
 {
 	if(!piece)
