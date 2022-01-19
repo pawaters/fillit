@@ -13,6 +13,7 @@
 #include "fillit.h"
 
 /*
+ * GENERAL STRUCTURE
  * The solver will take a list of tetromino as input and:
  * 1) in_bounds: check if in that position it fits in the current map
  * 2) overlap: check if it does not overlap in that position with another piece,
@@ -52,21 +53,71 @@ int	overlap(t_map *map, t_piece *piece)
 	int	y;
 
 	i = 0;
-	x = piece->blockcoords[i] + piece->x_offset;
-	y = piece->blockcoords[i + 1] + piece->y_offset;
-	while (i <= 6 && map->array[y][x] == '.')
+	x = 0;
+	y = 0;
+	while (i <= 6 && map->array[x][y] == '.')
 	{
-		i += 2;
 		x = piece->blockcoords[i] + piece->x_offset;
 		y = piece->blockcoords[i + 1] + piece->y_offset;
+		i += 2;
 	}
 	return (i != 8);
+}
 
 /*
  * If there piece is not out of bounds and fits with the other pieces (no overlap), 
- * we place it our map
+ * we place it our map, following the coordinates and offset of the piece.
 */
 
+void	place(t_piece *piece, t_map *map, char letter)
+{
+	int	i;
+	
+	i = 0;
+	x = 0;
+	y = 0;
+	while (i <=6)
+	{
+		x = piece->blockcoords[i] + piece->x_offset;
+		y = piece->blockcoords[i + 1] + piece->y_offset;
+		map->array[x][y] = letter;
+		i += 2;
+	}
+}
+
+/*
+ * The function that tests each tetrimino at top left position is in bounds or overlap.
+ * If all is good, goes to next tetrimino. 
+ * If a check fails, it comes back one loop before, to try another position.
+ * Or if all positions fail for that piece, the previous piece at another place
+*/
+
+int	solve_map(tmap *map, t_piece *piece, int map_size)
+{
+	if(!piece)
+		return (1);
+	piece->x_offset = 0;
+	piece->y_offset = 0;
+
+	while (in_bounds(piece, map_size, 'y'))
+	{
+		while (in_bounds(piece, map_size, 'x'))
+		{
+			if(!overlap(map, piece))
+			{
+				place (piece, map, piece->pieceletter);
+				if (solve_map(map, piece->next, map_size))
+					return (1);
+				else
+					place(piece, map, '.');
+			}
+			piece->x_offset++;
+		}
+		piece->x_offset = 0;
+		piece->y_offset++;
+	}
+	return (0);
+}
 
 
 
