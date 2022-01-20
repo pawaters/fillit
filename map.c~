@@ -62,5 +62,28 @@ int	min_map_size(t_piece *piecelist)
 	
 int	count_pieces(t_piece *piecelist)
 {
-	
+	int	i;
+
+	i = 0;
+	while (piecelist)
+	{
+		piecelist = piecelist->next;
+		i++;
+	}
+	return (i);	
 }
+
+void	print_map(t_map	*map, int map_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < map_size)
+	{
+		ft_putstr(map->array[i]);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
+

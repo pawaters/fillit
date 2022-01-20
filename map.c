@@ -72,3 +72,41 @@ int	count_pieces(t_piece *piecelist)
 	}
 	return (i);	
 }
+
+void	print_map(t_map	*map, int map_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < map_size)
+	{
+		ft_putstr(map->array[i]);
+		ft_putchar('\n');
+		i++;
+	}
+}
+
+/*
+ * To free all the heap allocated memory for map, we need to free at each level
+ * - at the typedef struct level: t_map
+ * - at the array level within the struct: char** array
+ * - at each string level within the array. 
+ * We will start at the string level, then array, then t_map.
+ *
+ * We will use ft_memdel, which needs a pointer's address, and it  will 
+ * free its memory and also puts the pointer to NULL.
+*/
+
+void	free_map(t_map *map, int map_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < map_size)
+	{
+		ft_memdel((void **)&(map->array[i]));
+		i++;
+	}
+	ft_memdel((void **)&(map->array));
+	ft_memdel((void **)&map);
+}
