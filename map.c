@@ -42,5 +42,33 @@ t_map	*new_map(int map_size)
 	return (map);
 }
 
+/*
+ * Calculates the minimum map size based on the number of pieces:
+ * square root of the number of '#', ie of blocks that compose the pieces.
+ * We round it up to the next integer.
+*/
 
+int	min_map_size(t_piece *piecelist)
+{
+	int	i;
+	int	nb_blocks;
 	
+	nb_blocks = count_pieces(piecelist) * 4;
+	i = 2;
+	while (i * i <= nb_blocks)
+		i++;
+	return (i);
+}
+	
+int	count_pieces(t_piece *piecelist)
+{
+	int	i;
+
+	i = 0;
+	while (piecelist)
+	{
+		piecelist = piecelist->next;
+		i++;
+	}
+	return (i);	
+}
