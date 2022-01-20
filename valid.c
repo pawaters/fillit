@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:57:14 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/20 13:42:44 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/20 13:55:43 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,95 +18,75 @@
 ** If any checks are failed, returns false
 */
 
-int	check_tetri_chars(char *str)
+int	validate_characters(char *tetri)
 {
 	int	i;
-	int	count;
-	
+	int	height;
+	int	blocks;
+	int	characters;
+
 	i = 0;
-	count = 0;
-	while (i < 19) // block, including \n
+	height = 0;
+	blocks = 0;
+	characters = 0;
+	while ((tetri[i] == '.' || tetri[i] == '#' || tetri[i] == '\n') \
+			&& tetri[i] && (height != 4))
 	{
-		if (str[i] && str[i] != '\n' && str[i] != '#' && str[i] != '.')
-			return (0);
-		if (str[i] == '\n' && (((i + 1) % 5) == 0))
-			return (0);
-		if (str[i] == '#')
-			count++;
-		i++;
+		if (tetri[i] == '.' || tetri[i] == '#')
+		{
+			if (tetri[i] == '#')
+				blocks++;
+			characters++;
+		}
+		if (tetri[i++] == '\n')
+			height++;
 	}
-	if (!str[i] || str[i] != '\n')
-		return (0);
-	return (count);
+	if ((characters == 4 * 4) && (height == 4) && \
+			(blocks == 4) && (tetri[i] == '\n' || tetri[i] == '\0'))
+		return (1);
+	return (0);
 }
 
 /*
 ** Checks if tetrimino is right shape and returns 6 or 8 adjacencies
-** First checks if '#' connects to other '#' above, second checks right side
-** third checks down and fourth on the left side.
-** While checks connections of every '#' characters of one block
 */
 
-static int check_tetri_shape(char *str)
+int	validate_tetri(char **tetri)
 {
-	int	i;
 	int	count;
-	
-	i = 0;
+	int	row;
+	int	col;
+
 	count = 0;
-	while (i < 16)
+	row = -1;
+	while (4 > ++row)
 	{
-		if (str[i] == '#')
+		col = -1;
+		while (4 > ++col)
 		{
-			if ((str[i - 4] == '#') && (i > 3)) // above
-				count++;
-			if ((str[i + 1] == '#') && ((i + 1) % 4 != 0) && (i < 16)) //right
-				count++;
-			if ((str[i + 4] == '#') && (i > 12)) //down
-				count++;
-			if ((str[i - 1] == '#') && (i % 4 != 0) && (i != 0)) //left
-				count++;
+			if (tetri[row][col] == '#' && row < 3)
+				tetri[row + 1][col] == '#' ? count++ : count;
+			if (tetri[row][col] == '#' && row > 0)
+				tetri[row - 1][col] == '#' ? count++ : count;
+			if (tetri[row][col] == '#' && col < 3)
+				tetri[row][col + 1] == '#' ? count++ : count;
+			if (tetri[row][col] == '#' && col > 0)
+				tetri[row][col - 1] == '#' ? count++ : count;
 		}
-		i++;
 	}
-	return (count);
-}
-
-/*
-** The functions checks that we have the right amount of '.' and '#' chars.
-*/
-
-static int check_block_chars(char *str)
-{
-	static int	block_count; //saves??
-	int			hash;
-	int			dots;
-	int			i;
-	
-	block_count = 1; //There has to be atleast one block
-	hash = 0;
-	dots = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '.')
-			dots++;
-		if (str[i] == '#')
-			hash++;
-		i++;
-	}
-	if (dots == 12 && hash == 4)
-	{
-		check_tetri_shape(str);
-		if (check_tetri_shape(str) != 8 && check_tetri_shape(str) != 6)
-			return (0);
+	if (count == 6 || count == 8)
 		return (1);
-	}
 	return (0);
 }
 
 /*
 ** Checks that everything is valid
-** 
 */
 
+int	validate_input(char *map)
+{
+	if (validate_input(map))
+		if (validate_tetri((ft_strsplit(map, '\n'))))
+			return (1);
+	return (0);
+}
