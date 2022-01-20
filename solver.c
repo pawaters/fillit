@@ -130,7 +130,7 @@ void	solve(t_piece *piecelist)
 	t_map	*map
 	int	map_size;
 
-	map_size = round_up_sq_rt(count_pieces(piecelist) * 4);
+	map_size = min_map_size(piece_list);
 	map = new_map(map_size);
 	while (!solve_map(map, piece, map_size))
 	{
