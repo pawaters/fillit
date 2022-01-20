@@ -31,8 +31,8 @@ t_map	*new_map(int map_size)
 	int	i;
 	i = 0;
 
-	map = (t_map *)ft_memalloc(size_of(t_map));
-	map->array = (char**)ft_memalloc(size_of(char *) * map_size);
+	map = (t_map *)ft_memalloc(sizeof(t_map));
+	map->array = (char**)ft_memalloc(sizeof(char *) * map_size);
 	while (i < map_size)
 	{
 		map->array[i] = ft_strnew(map_size);

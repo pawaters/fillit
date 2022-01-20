@@ -13,11 +13,11 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef	struct		s_piece
 {
-	int		blockcoord[8];
+	int		blockcoords[8];
 	char		piece_letter;
 	int		x_offset;
 	int		y_offset;

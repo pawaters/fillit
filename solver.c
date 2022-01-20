@@ -71,6 +71,8 @@ int	overlap(t_map *map, t_piece *piece)
 void	place(t_piece *piece, t_map *map, char letter)
 {
 	int	i;
+	int	x;
+	int	y;
 	
 	i = 0;
 	x = 0;
@@ -104,7 +106,7 @@ int	solve_map(t_map *map, t_piece *piece, int map_size)
 		{
 			if(!overlap(map, piece))
 			{
-				place (piece, map, piece->pieceletter);
+				place (piece, map, piece->piece_letter);
 				if (solve_map(map, piece->next, map_size))
 					return (1);
 				else
@@ -126,12 +128,12 @@ int	solve_map(t_map *map, t_piece *piece, int map_size)
 
 void	solve(t_piece *piecelist)
 {
-	t_map	*map
+	t_map	*map;
 	int	map_size;
 
-	map_size = min_map_size(piece_list);
+	map_size = min_map_size(piecelist);
 	map = new_map(map_size);
-	while (!solve_map(map, piece, map_size))
+	while (!solve_map(map, piecelist, map_size))
 	{
 		free_map(map, map_size);
 		map_size++;
