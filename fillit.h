@@ -29,4 +29,15 @@ typedef struct	s_map
 	char	**array;
 }		t_map;
 
+int	in_bounds(t_piece *piece, int map_size, char axis);
+int	overlap(t_map *map, t_piece *piece);
+void	place(t_piece *piece, t_map *map, char letter);
+int	solve_map(t_map *map, t_piece *piece, int map_size);
+void	solve(t_piece *piecelist);
+t_map	*new_map(int map_size);
+int	min_map_size(t_piece *piecelist);
+int	count_pieces(t_piece *piecelist);
+void	print_map(t_map *map, int map_size);
+void	free_map(t_map *map, int map_size);
+
 #endif

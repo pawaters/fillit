@@ -91,7 +91,7 @@ void	place(t_piece *piece, t_map *map, char letter)
  * Or if all positions fail for that piece, the previous piece at another place
 */
 
-int	solve_map(tmap *map, t_piece *piece, int map_size)
+int	solve_map(t_map *map, t_piece *piece, int map_size)
 {
 	if(!piece)
 		return (1);
@@ -120,7 +120,7 @@ int	solve_map(tmap *map, t_piece *piece, int map_size)
 
 /*
  * MAIN FUNCTION OF SOLVER.C
- * Start with Min possible size of map: square root of nb of '#' (pieces*4).
+ * Start with Min possible size of map: square root of nb of '#' (pieces*4)
  * Uses solve_map, and if no solution, increases map size by 1.
 */
 

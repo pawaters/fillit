@@ -12,4 +12,11 @@
  * - with 4 pieces, requires 1st piece shifted with backtracking
 */
 
-
+int	main (void)
+{
+	t_map	*map;
+	int	map_size = 5;
+	
+	map = new_map(map_size);
+	print_map(map, map_size);
+}
