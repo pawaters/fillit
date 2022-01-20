@@ -1,0 +1,6 @@
+#include "../fillit.h"
+
+/* TEST FILE FOR SOLVER.C & MAP.C:
+ * 1) generate a sample piece_list,
+ * 2) print a sample piece_list
+ * 3) 
