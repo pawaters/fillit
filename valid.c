@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:57:14 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/19 12:46:28 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/20 13:42:44 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_tetri_chars(char *str)
 }
 
 /*
-** Checks if tetrimino is right shape and returns 6 or 8
+** Checks if tetrimino is right shape and returns 6 or 8 adjacencies
 ** First checks if '#' connects to other '#' above, second checks right side
 ** third checks down and fourth on the left side.
 ** While checks connections of every '#' characters of one block
@@ -78,12 +78,12 @@ static int check_tetri_shape(char *str)
 
 static int check_block_chars(char *str)
 {
-	static int	block_count;
+	static int	block_count; //saves??
 	int			hash;
 	int			dots;
 	int			i;
 	
-	block_count = 1;
+	block_count = 1; //There has to be atleast one block
 	hash = 0;
 	dots = 0;
 	i = 0;
@@ -109,3 +109,4 @@ static int check_block_chars(char *str)
 ** Checks that everything is valid
 ** 
 */
+
