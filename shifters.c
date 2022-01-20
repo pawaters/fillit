@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   shifters.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/20 14:01:11 by msilen           ###   ########.fr       */
+/*   Created: 2022/01/20 14:03:52 by msilen            #+#    #+#             */
+/*   Updated: 2022/01/20 14:06:54 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-** Frees the piecelist
+** Moves a piece n places along the x-axis
 */
 
-void	free_piecelist(t_piece *list)
+void	shift_x(t_piece *piece, int n)
 {
-	t_piece *tmp;
-	
-	while (list)
-	{
-		tmp = list;
-		list = list->next;
-		free(tmp);
-	}
+	piece->blockcoord[0] += n;
+	piece->blockcoord[2] += n;
+	piece->blockcoord[4] += n;
+	piece->blockcoord[6] += n;
 }
 
-t_piece	*corner(t_piece *piece)
+/*
+** Moves a piece n places along the y-axis
+*/
+
+void	shift_y(t_piece *piece, int n)
 {
-	while (piece->blockcoord[0] != 0 && \
-				piece->blockcoord[2] != 0 && \
-				piece->blockcoord[4] != 0 && \
-				piece->blockcoord[6] != 0)
-		shift
+	piece->blockcoord[1] += n;
+	piece->blockcoord[3] += n;
+	piece->blockcoord[5] += n;
+	piece->blockcoord[7] += n;
 }
+
+
