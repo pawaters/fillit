@@ -12,6 +12,15 @@
 
 #include "fillit.h"
 
+/* STRUCTURE OF MAP.C
+ * In this file, we will have the helper functions related to the map:
+ * - new_map: to create a fresh map on the heap, full of '.'
+ * - print_map: to print the solved map on the screen
+ * - free_map: to free the memory allocated on the t_map at different levels
+ * - min_map_size: to calculate based on the number of pieces the min map size
+ * - count_pieces: we need that for the previous function
+*/
+
 /*
  * Create an array of strings full of '.' of the size indicated
 */
