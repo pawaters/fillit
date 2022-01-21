@@ -90,12 +90,12 @@ int	main (void)
 // Test: create a sample piece list and print elements of struct
 
 	t_piece first = {{0, 0, 0, 1, 0, 2, 0, 3}, 'A', 0, 0, NULL};
-	//t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
-	//t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
-	//t_piece fourth = {{0, 0, 0, 1, 0, 2, 0, 3}, 'D', 0, 0, NULL};
-	//first.next = &second;
-	//second.next = &third;
-	//third.next = &fourth;
+	t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
+	t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
+	t_piece fourth = {{0, 0, 0, 1, 0, 2, 0, 3}, 'D', 0, 0, NULL};
+	first.next = &second;
+	second.next = &third;
+	third.next = &fourth;
 	t_piece *head = &first;
 
 // Print blockcoord

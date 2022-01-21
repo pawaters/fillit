@@ -36,7 +36,7 @@ t_map	*new_map(int map_size)
 	while (i < map_size)
 	{
 		map->array[i] = ft_strnew(map_size);
-		map->array[i] = ft_memset(map->array[i], '.', map_size);
+		ft_memset(map->array[i], '.', map_size);
 		i++;
 	}
 	return (map);

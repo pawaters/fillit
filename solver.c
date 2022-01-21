@@ -52,11 +52,9 @@ int	overlap(t_map *map, t_piece *piece)
 	int	y;
 
 	i = 0;
-	x = 0;
-	y = 0;
 	x = piece->blockcoords[i] + piece->x_offset;
 	y = piece->blockcoords[i + 1] + piece->y_offset;
-	while (i <= 6 && map->array[x][y] == '.')
+	while (i <= 6 && map->array[y][x] == '.')
 	{
 		i += 2;
 		x = piece->blockcoords[i] + piece->x_offset;
