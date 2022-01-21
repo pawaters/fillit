@@ -81,7 +81,7 @@ void	place(t_piece *piece, t_map *map, char letter)
 	{
 		x = piece->blockcoords[i] + piece->x_offset;
 		y = piece->blockcoords[i + 1] + piece->y_offset;
-		map->array[x][y] = letter;
+		map->array[y][x] = letter;
 		i += 2;
 	}
 }

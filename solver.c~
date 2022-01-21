@@ -81,7 +81,7 @@ void	place(t_piece *piece, t_map *map, char letter)
 	{
 		x = piece->blockcoords[i] + piece->x_offset;
 		y = piece->blockcoords[i + 1] + piece->y_offset;
-		map->array[x][y] = letter;
+		map->array[y][x] = letter;
 		i += 2;
 	}
 }
@@ -133,7 +133,7 @@ void	solve(t_piece *piecelist)
 
 	map_size = min_map_size(piecelist);
 	map = new_map(map_size);
-	while (!solve_map(map, piece, map_size))
+	while (!solve_map(map, piecelist, map_size))
 	{
 		free_map(map, map_size);
 		map_size++;
