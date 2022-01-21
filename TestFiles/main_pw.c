@@ -54,6 +54,28 @@ void	printpiece(t_piece *piece)
 	}
 }
 
+t_piece	*printpiecelist(t_piece *piecelist)
+{
+	t_piece	*head = piecelist;
+
+	while (piecelist->next)
+	{
+		ft_putstr("Piece letter is :\n");
+		ft_putchar(piecelist->piece_letter);
+		ft_putchar('\n');
+		printcoords(piecelist);
+		printpiece(piecelist);
+		piecelist = piecelist->next;
+	}
+		ft_putstr("Piece letter is :\n");
+		ft_putchar(piecelist->piece_letter);
+		ft_putchar('\n');
+		printcoords(piecelist);
+		printpiece(piecelist);
+
+	return (head);
+}
+
 int	main (void)
 {
 
@@ -86,12 +108,17 @@ int	main (void)
 
 // Print piece as a tetrimino
 
-	(void)head;
-	printpiece(&first);
-	printpiece(&second);
-	printpiece(&third);
-	printpiece(&fourth);
+	//(void)head;
+	//printpiece(&first);
+	//printpiece(&second);
+	//printpiece(&third);
+	//printpiece(&fourth);
 
+// Print piece_list as tetriminoes with letter
+
+	printpiecelist(head);
+
+	
 
 // Test solve
 
