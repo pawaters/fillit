@@ -55,7 +55,7 @@ int	min_map_size(t_piece *piecelist)
 	
 	nb_blocks = count_pieces(piecelist) * 4;
 	i = 2;
-	while (i * i <= nb_blocks)
+	while (i * i < nb_blocks)
 		i++;
 	return (i);
 }
