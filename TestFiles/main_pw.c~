@@ -12,6 +12,47 @@
  * - with 4 pieces, requires 1st piece shifted with backtracking
 */
 
+//printcoords, printpiece and printpiecelist to check the struct
+
+void	printcoords(t_piece *piece)
+{
+	int	i;
+
+	i = 0;
+	ft_putstr("Coordinates of piece:\n");
+	while (i <= 6)
+	{
+		ft_putstr("- block number ");
+		ft_putnbr(i % 2 + 1);
+		ft_putstr(": x = ");
+		ft_putnbr(piece->blockcoords[i]);
+		ft_putstr(", y = ");
+		i++;
+		ft_putnbr(piece->blockcoords[i]);
+		ft_putstr(".\n");
+		i++;
+	}
+}
+
+void	printpiece(t_piece *piece)
+{
+	char	piecemap[4][5] = {"....\0", "....\0", "....\0", "....\0"};
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		piecemap[piece->blockcoords[i + 1]][piece->blockcoords[i]] = piece->piece_letter;
+		i += 2;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		ft_putstr(piecemap[i]);
+		i++;
+	}
+}
+
 int	main (void)
 {
 
@@ -34,5 +75,24 @@ int	main (void)
 	third.next = &fourth;
 	t_piece *head = &first;
 
-	solve(head);
+// Print blockcoord
+
+//	(void)head;
+//	printcoords(&first);
+//	printcoords(&second);
+//	printcoords(&third);
+//	printcoords(&fourth);
+
+// Print piece as a tetrimino
+
+	(void)head;
+	printpiece(&first);
+	printpiece(&second);
+	printpiece(&third);
+	printpiece(&fourth);
+
+
+// Test solve
+
+//	solve(head);
 }
