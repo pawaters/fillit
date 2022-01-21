@@ -87,15 +87,59 @@ int	main (void)
 //	map = new_map(map_size);
 //	print_map(map, map_size);
 
-// Test: create a sample piece list and print elements of struct
+// 4 piece list with all line type pieces.
 
-	t_piece first = {{0, 0, 0, 1, 0, 2, 0, 3}, 'A', 0, 0, NULL};
-	t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
+//	t_piece first = {{0, 0, 0, 1, 0, 2, 0, 3}, 'A', 0, 0, NULL};
+//	t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
+//	t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
+//	t_piece fourth = {{0, 0, 0, 1, 0, 2, 0, 3}, 'D', 0, 0, NULL};
+//	first.next = &second;
+//	second.next = &third;
+//	third.next = &fourth;
+
+// 3 piece list (line, line, square) - requires some shifting to the right.
+
+//	t_piece first = {{0, 0, 0, 1, 1, 0, 1, 1}, 'A', 0, 0, NULL};
+//	t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
+//	t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
+//	first.next = &second;
+//	second.next = &third;
+//	t_piece *head = &first;
+
+// 4 piece list (3 lines, square) - requires some shifting, and map growth.
+
+//	t_piece first = {{0, 0, 0, 1, 1, 0, 1, 1}, 'A', 0, 0, NULL};
+//	t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
+//	t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
+//	t_piece fourth = {{0, 0, 0, 1, 0, 2, 0, 3}, 'D', 0, 0, NULL};
+//	first.next = &second;
+//	second.next = &third;
+//	third.next = &fourth;
+//	fourth.next = NULL;
+//	t_piece *head = &first;
+
+// 4 piece list (2 lines, 2 squares) - requires some shifting, and no map growth.
+
+//	t_piece first = {{0, 0, 0, 1, 1, 0, 1, 1}, 'A', 0, 0, NULL};
+//	t_piece second = {{0, 0, 0, 1, 0, 2, 0, 3}, 'B', 0, 0, NULL};
+//	t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
+//	t_piece fourth = {{0, 0, 0, 1, 1, 0, 1, 1}, 'D', 0, 0, NULL};
+//	first.next = &second;
+//	second.next = &third;
+//	third.next = &fourth;
+//	fourth.next = NULL;
+//	t_piece *head = &first;
+
+// 4 piece list (square, upside down T, line, L) - requires some shifting, and no map growth.
+
+	t_piece first = {{0, 0, 0, 1, 1, 0, 1, 1}, 'A', 0, 0, NULL};
+	t_piece second = {{0, 1, 1, 1, 2, 1, 1, 0}, 'B', 0, 0, NULL};
 	t_piece third = {{0, 0, 0, 1, 0, 2, 0, 3}, 'C', 0, 0, NULL};
-	//t_piece fourth = {{0, 0, 0, 1, 0, 2, 0, 3}, 'D', 0, 0, NULL};
+	t_piece fourth = {{1, 0, 1, 1, 1, 2, 0, 2}, 'D', 0, 0, NULL};
 	first.next = &second;
 	second.next = &third;
-	//third.next = &fourth;
+	third.next = &fourth;
+	fourth.next = NULL;
 	t_piece *head = &first;
 
 // Print blockcoord
