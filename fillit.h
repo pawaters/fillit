@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paw <paw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:12:38 by paw               #+#    #+#             */
-/*   Updated: 2022/01/19 11:14:33 by paw              ###   ########.fr       */
+/*   Updated: 2022/01/22 13:00:53 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FILLIT_H
 
 # include "libft/libft.h"
+# include <fcntl.h>
 
 typedef	struct		s_piece
 {
