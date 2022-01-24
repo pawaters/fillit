@@ -6,7 +6,7 @@
 #    By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 06:55:05 by msilen            #+#    #+#              #
-#    Updated: 2022/01/24 07:15:49 by msilen           ###   ########.fr        #
+#    Updated: 2022/01/24 07:24:56 by msilen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,18 @@ SRC = map.c \
 	valid.c \
 	parser.c
 
-
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):  $(OBJ)
-	@echo "Compiling"
-	@$(CC) $(CFLAGS) $(SRC)
-	@ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@echo "$(NAME) created"
+	@ranlib $(NAME)
+	@echo "$(NAME) indexed"
 
+%.o: %.c
+	@gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
 	@echo "Deleting .o files..."
