@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:57:14 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/20 13:55:43 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 10:08:23 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,72 +21,71 @@
 int	validate_characters(char *tetri)
 {
 	int	i;
-	int	height;
-	int	blocks;
-	int	characters;
+	int	count;
+	
+	i = 0;
+	count = 0;
+	while (i < 19)
+	{
+		if (tetri[i] && tetri[i] != '\n' && tetri[i] != '#' && tetri[i] != '.')
+			return (0);
+		if (tetri[i] == '\n' && !(((i + 1) % 5) == 0))
+			return (0);
+		if (tetri[i] == '#')
+			count++;
+		i++;
+	}
+	if (!tetri[i] || tetri[i] != '\n')
+		return (0);
+	return (count);
+}
+/*
+** Checks if tetrimino is right shape and counts how many adjacencies
+** it has.
+*/
+
+int	validate_tetri(char *tetri)
+{
+	int	i;
+	int	count;
+	
+	i = 0;
+	count = 0;
+	while (i < 19)
+	{
+		if (tetri[i] == '#')
+		{
+			if (i + 1 <= 18 && tetri[i + 1] == '#')
+				count++;
+			if (i - 1 >= 0 && tetri[i - 1] == '#')
+				count++;
+			if (i + 5 <= 18 && tetri[i + 5] == '#')
+				count++;
+			if (i - 5 >= 0 && tetri[i - 5] == '#')
+				count++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+/*
+** Checks that everything is valid by iterating through buf 21 chars
+** at a time
+*/
+
+int	validate_input(char *tetri, int size)
+{
+	int	i;
 
 	i = 0;
-	height = 0;
-	blocks = 0;
-	characters = 0;
-	while ((tetri[i] == '.' || tetri[i] == '#' || tetri[i] == '\n') \
-			&& tetri[i] && (height != 4))
+	while (i <= size)
 	{
-		if (tetri[i] == '.' || tetri[i] == '#')
-		{
-			if (tetri[i] == '#')
-				blocks++;
-			characters++;
-		}
-		if (tetri[i++] == '\n')
-			height++;
+		if (validate_characters(tetri + 1) != 4)
+			return (0);
+		if (validate_tetri(tetri + i) != 6 && validate_tetri(tetri + 1) != 8)
+			return (0);
+		i += 21;
 	}
-	if ((characters == 4 * 4) && (height == 4) && \
-			(blocks == 4) && (tetri[i] == '\n' || tetri[i] == '\0'))
-		return (1);
-	return (0);
-}
-
-/*
-** Checks if tetrimino is right shape and returns 6 or 8 adjacencies
-*/
-
-int	validate_tetri(char **tetri)
-{
-	int	count;
-	int	row;
-	int	col;
-
-	count = 0;
-	row = -1;
-	while (4 > ++row)
-	{
-		col = -1;
-		while (4 > ++col)
-		{
-			if (tetri[row][col] == '#' && row < 3)
-				tetri[row + 1][col] == '#' ? count++ : count;
-			if (tetri[row][col] == '#' && row > 0)
-				tetri[row - 1][col] == '#' ? count++ : count;
-			if (tetri[row][col] == '#' && col < 3)
-				tetri[row][col + 1] == '#' ? count++ : count;
-			if (tetri[row][col] == '#' && col > 0)
-				tetri[row][col - 1] == '#' ? count++ : count;
-		}
-	}
-	if (count == 6 || count == 8)
-		return (1);
-	return (0);
-}
-
-/*
-** Checks that everything is valid
-*/
-
-int	validate_input(char *map)
-{
-	if (validate_input(map))
-		if (validate_tetri((ft_strsplit(map, '\n'))))
-			return (1);
-	return (0);
+	return (1);
 }

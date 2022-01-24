@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 06:48:18 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 10:12:32 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,10 @@ t_piece	*makelist(char *str, int size)
 }
 
 /*
-** Still woeking on it
-** 
+** Control all parsing functions
+** Open and reads file into a buffer of size 545 (max file size + 1)
+** If a file is too small or large, it rejects it
+** returns a list of piece structs
 */
 
 t_piece	*parser(char *filename)
@@ -132,7 +134,7 @@ t_piece	*parser(char *filename)
 	if (bytecount > 544 || bytecount < 19)
 		return (NULL);
 	buf[bytecount] = '\0';
-	if (!validate_input(buf))
+	if (!validate_input(buf, bytecount))
 		return (NULL);
 	return (makelist(buf, bytecount));
 }
