@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:12:38 by paw               #+#    #+#             */
-/*   Updated: 2022/01/24 06:38:46 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 10:09:11 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_piece	*makepiece(char *str, char piece_letter);
 t_piece	*makelist(char *str, int size);
 t_piece	*parser(char *filename);
 int	validate_characters(char *tetri);
-int	validate_tetri(char **tetri);
-int	validate_input(char *map);
+int	validate_tetri(char *tetri);
+int	validate_input(int size, char *tetri);
 
 #endif
