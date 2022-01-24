@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 14:15:07 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 14:42:36 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ t_piece	*upperleft_corner(t_piece *piece)
 ** The function assigns the tetriminos cordinates
 */
 
-t_piece	*assign_coords(char *str)
+void	assign_coords(char *str, t_piece *piece)
 {
-	t_piece	*piece;
 	int	i;
 	int	x;
 	int	y;
@@ -61,14 +60,11 @@ t_piece	*assign_coords(char *str)
 	i = 0;
 	x = 0;
 	y = 1;
-	piece = (t_piece *)malloc(sizeof(t_piece));
-	if (piece == NULL)
-		return (NULL);
 	while (i < 20)
 	{
 		if (str[i] == '#')
 		{
-			if (piece->blockcoords[x] = (i >= 5))
+			if (piece->blockcoords[x] == i >= 5)
 				piece->blockcoords[x] = (1 % 5);
 			else
 				piece->blockcoords[x] = i;
@@ -88,8 +84,11 @@ t_piece	*assign_coords(char *str)
 t_piece	*makepiece(char *str, char piece_letter)
 {
 	t_piece	*piece;
-
-	assign_coords(*str);
+	
+	piece = (t_piece *)malloc(sizeof(t_piece));
+	if (piece == NULL)
+		return (NULL);
+	assign_coords(str, piece);
 	piece->x_offset = 0;
 	piece->y_offset = 0;
 	piece->piece_letter = piece_letter;

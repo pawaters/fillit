@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:12:38 by paw               #+#    #+#             */
-/*   Updated: 2022/01/24 14:16:40 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 14:38:09 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_map(t_map *map, int map_size);
 void	free_map(t_map *map, int map_size);
 void	free_piecelist(t_piece *list);
 t_piece	*upperleft_corner(t_piece *piece);
-t_piece	*assign_coords(char *str);
+void	assign_coords(char *str, t_piece *piece);
 t_piece	*makepiece(char *str, char piece_letter);
 t_piece	*makelist(char *str, int size);
 t_piece	*parser(char *filename);
