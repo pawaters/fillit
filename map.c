@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paw <paw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:13:21 by paw               #+#    #+#             */
-/*   Updated: 2022/01/19 11:14:34 by paw              ###   ########.fr       */
+/*   Updated: 2022/01/24 11:20:04 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@
 t_map	*new_map(int map_size)
 {
 	t_map	*map;
-	int	i;
-	i = 0;
+	int		i;
 
+	i = 0;
 	map = (t_map *)ft_memalloc(sizeof(t_map));
-	map->array = (char**)ft_memalloc(sizeof(char *) * map_size);
+	map->array = (char **)ft_memalloc(sizeof(char *) * map_size);
 	while (i < map_size)
 	{
 		map->array[i] = ft_strnew(map_size);
@@ -52,14 +52,14 @@ int	min_map_size(t_piece *piecelist)
 {
 	int	i;
 	int	nb_blocks;
-	
+
 	nb_blocks = count_pieces(piecelist) * 4;
 	i = 2;
 	while (i * i < nb_blocks)
 		i++;
 	return (i);
 }
-	
+
 int	count_pieces(t_piece *piecelist)
 {
 	int	i;
@@ -70,7 +70,7 @@ int	count_pieces(t_piece *piecelist)
 		piecelist = piecelist->next;
 		i++;
 	}
-	return (i);	
+	return (i);
 }
 
 void	print_map(t_map	*map, int map_size)
