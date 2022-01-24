@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 11:53:07 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/24 14:15:07 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 void	free_piecelist(t_piece *list)
 {
-	t_piece *tmp;
-	
+	t_piece	*tmp;
+
 	while (list)
 	{
 		tmp = list;
@@ -48,6 +48,39 @@ t_piece	*upperleft_corner(t_piece *piece)
 }
 
 /*
+** The function assigns the tetriminos cordinates
+*/
+
+t_piece	*assign_coords(char *str)
+{
+	t_piece	*piece;
+	int	i;
+	int	x;
+	int	y;
+
+	i = 0;
+	x = 0;
+	y = 1;
+	piece = (t_piece *)malloc(sizeof(t_piece));
+	if (piece == NULL)
+		return (NULL);
+	while (i < 20)
+	{
+		if (str[i] == '#')
+		{
+			if (piece->blockcoords[x] = (i >= 5))
+				piece->blockcoords[x] = (1 % 5);
+			else
+				piece->blockcoords[x] = i;
+			piece->blockcoords[y] = i / 5;
+			x += 2;
+			y += 2;
+		}
+		i++;
+	}
+}
+
+/*
 ** Creates and mallocs a new piece. Finds and stores the coordinates of '#'
 ** chars. Returns aligned piece
 */
@@ -55,27 +88,8 @@ t_piece	*upperleft_corner(t_piece *piece)
 t_piece	*makepiece(char *str, char piece_letter)
 {
 	t_piece	*piece;
-	int		x;
-	int		y;
-	int		i;
-	
-	x = 0;
-	y = 1;
-	i = 0;
-	piece = (t_piece*)malloc(sizeof(t_piece));
-	if (piece == NULL)
-		return (NULL);
-	while (i < 20)
-	{
-		if (str[i] == '#')
-		{
-			piece->blockcoords[x] = (i >= 5) ? (i % 5) : i;
-			piece->blockcoords[y] = i / 5;
-			x += 2;
-			y += 2;
-		}
-		i++;
-	}
+
+	assign_coords(*str);
 	piece->x_offset = 0;
 	piece->y_offset = 0;
 	piece->piece_letter = piece_letter;
@@ -93,7 +107,7 @@ t_piece	*makelist(char *str, int size)
 	t_piece	*beginning;
 	int		i;
 	char	piece_letter;
-	
+
 	i = 0;
 	piece_letter = 'A';
 	while (i < size)
@@ -127,7 +141,7 @@ t_piece	*parser(char *filename)
 	char	buf[545];
 	int		fd;
 	int		bytecount;
-	
+
 	fd = open(filename, O_RDONLY);
 	bytecount = read(fd, buf, 545);
 	close(fd);
