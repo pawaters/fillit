@@ -6,43 +6,30 @@
 #    By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 06:55:05 by msilen            #+#    #+#              #
-#    Updated: 2022/01/24 07:24:56 by msilen           ###   ########.fr        #
+#    Updated: 2022/01/24 07:30:20 by msilen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
-
 NAME = fillit
+CC = clang
+FLAGS = -Wall -Wextra -Werror
+INCLUDES = libft
+SRCS = map.c parser.c solver.c valid.c shifters.c
+OBJS = *.o
+LIB_DIR = libft/
 
-SRC = map.c \
-	shifters.c \
-	solver.c \
-	valid.c \
-	parser.c
-
-OBJ = $(SRC:.c=.o)
+$(NAME):
+	make -C $(LIB_DIR) fclean && make -C $(LIB_DIR)
+	$(CC) $(FLAGS) -I $(INCLUDES) -c $(SRCS)
+	$(CC) -o $(NAME) $(OBJS) -I $(INCLUDES) -L $(LIB_DIR) -lft
 
 all: $(NAME)
-
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@echo "$(NAME) created"
-	@ranlib $(NAME)
-	@echo "$(NAME) indexed"
-
-%.o: %.c
-	@gcc -Wall -Wextra -Werror -c $< -o $@
 
 clean:
-	@echo "Deleting .o files..."
-	@/bin/rm -f *.o
+	rm -rf $(OBJS)
+	make -C $(LIB_DIR) fclean
 
 fclean: clean
-	@echo "Cleaning up..."
-	@/bin/rm -f $(NAME)
+	rm -rf $(NAME)
 
-all: $(NAME)
-
-re: fclean all
-	@echo "Re-compiling..."
-	@echo "OK!"
+re:	fclean all
