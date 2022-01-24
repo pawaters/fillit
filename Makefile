@@ -6,7 +6,7 @@
 #    By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 06:55:05 by msilen            #+#    #+#              #
-#    Updated: 2022/01/24 07:30:20 by msilen           ###   ########.fr        #
+#    Updated: 2022/01/24 07:33:29 by msilen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 CC = clang
 FLAGS = -Wall -Wextra -Werror
 INCLUDES = libft
-SRCS = map.c parser.c solver.c valid.c shifters.c
+SRCS = main.c map.c parser.c solver.c valid.c shifters.c
 OBJS = *.o
 LIB_DIR = libft/
 
