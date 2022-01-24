@@ -6,7 +6,7 @@
 /*   By: paw <paw@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:07:05 by paw               #+#    #+#             */
-/*   Updated: 2022/01/19 11:14:36 by paw              ###   ########.fr       */
+/*   Updated: 2022/01/24 09:52:42 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	in_bounds(t_piece *piece, int map_size, char axis)
 				piece->blockcoords[5] + piece->y_offset < map_size &&
 				piece->blockcoords[7] + piece->y_offset < map_size);
 	else	
-		return (piece->blockcoords[0] + piece->y_offset < map_size &&
-				piece->blockcoords[2] + piece->y_offset < map_size &&
-				piece->blockcoords[4] + piece->y_offset < map_size &&
-				piece->blockcoords[6] + piece->y_offset < map_size);
+		return (piece->blockcoords[0] + piece->x_offset < map_size &&
+				piece->blockcoords[2] + piece->x_offset < map_size &&
+				piece->blockcoords[4] + piece->x_offset < map_size &&
+				piece->blockcoords[6] + piece->x_offset < map_size);
 }
 
 /*
