@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:57:14 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 10:34:38 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 11:52:26 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	validate_input(int size, char *tetri)
 	{
 		if (validate_characters(tetri + 1) != 4)
 			return (0);
-		if (validate_tetri(tetri + i) != 6 && validate_tetri(tetri + 1) != 8)
+		if (validate_tetri(tetri + 1) != 6 && validate_tetri(tetri + 1) != 8)
 			return (0);
 		i += 21;
 	}
