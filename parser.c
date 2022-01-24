@@ -6,27 +6,11 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 15:04:36 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 15:11:56 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*
-** Frees the piecelist
-*/
-
-void	free_piecelist(t_piece *list)
-{
-	t_piece	*tmp;
-
-	while (list)
-	{
-		tmp = list;
-		list = list->next;
-		free(tmp);
-	}
-}
 
 /*
 ** Moves the piece to upperleft corner of its block using shifter functions.
@@ -84,7 +68,7 @@ void	assign_coords(char *str, t_piece *piece)
 t_piece	*makepiece(char *str, char piece_letter)
 {
 	t_piece	*piece;
-	
+
 	piece = (t_piece *)malloc(sizeof(t_piece));
 	if (piece == NULL)
 		return (NULL);
@@ -127,7 +111,6 @@ t_piece	*makelist(char *str, int size)
 	current->next = NULL;
 	return (beginning);
 }
-
 
 /*
 ** Control all parsing functions
