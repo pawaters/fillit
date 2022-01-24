@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:03:52 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/20 14:06:54 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 07:26:15 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 void	shift_x(t_piece *piece, int n)
 {
-	piece->blockcoord[0] += n;
-	piece->blockcoord[2] += n;
-	piece->blockcoord[4] += n;
-	piece->blockcoord[6] += n;
+	piece->blockcoords[0] += n;
+	piece->blockcoords[2] += n;
+	piece->blockcoords[4] += n;
+	piece->blockcoords[6] += n;
 }
 
 /*
@@ -30,10 +30,9 @@ void	shift_x(t_piece *piece, int n)
 
 void	shift_y(t_piece *piece, int n)
 {
-	piece->blockcoord[1] += n;
-	piece->blockcoord[3] += n;
-	piece->blockcoord[5] += n;
-	piece->blockcoord[7] += n;
+	piece->blockcoords[1] += n;
+	piece->blockcoords[3] += n;
+	piece->blockcoords[5] += n;
+	piece->blockcoords[7] += n;
 }
-
 
