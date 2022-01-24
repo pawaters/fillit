@@ -6,30 +6,27 @@
 #    By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 06:55:05 by msilen            #+#    #+#              #
-#    Updated: 2022/01/24 07:33:29 by msilen           ###   ########.fr        #
+#    Updated: 2022/01/24 12:26:45 by msilen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
-CC = clang
-FLAGS = -Wall -Wextra -Werror
-INCLUDES = libft
 SRCS = main.c map.c parser.c solver.c valid.c shifters.c
-OBJS = *.o
-LIB_DIR = libft/
-
-$(NAME):
-	make -C $(LIB_DIR) fclean && make -C $(LIB_DIR)
-	$(CC) $(FLAGS) -I $(INCLUDES) -c $(SRCS)
-	$(CC) -o $(NAME) $(OBJS) -I $(INCLUDES) -L $(LIB_DIR) -lft
+OBJS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
+$(NAME):
+	make -C ./libft
+	gcc -Wall -Werror -Wextra -c $(SRCS)
+	gcc -Wall -Werror -Wextra -o $(NAME) $(OBJS) -L./libft -lft
+
 clean:
-	rm -rf $(OBJS)
-	make -C $(LIB_DIR) fclean
+	rm -f $(OBJS)
+	make -C ./libft clean
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+	make -C ./libft fclean
 
 re:	fclean all
