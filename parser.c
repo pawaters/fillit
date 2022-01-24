@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 10:12:32 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 10:35:59 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_piece	*makepiece(char *str, char piece_letter)
 	int		i;
 	
 	x = 0;
-	y = 0;
+	y = 1;
 	i = 0;
 	piece = (t_piece*)malloc(sizeof(t_piece));
 	if (piece == NULL)
@@ -72,7 +72,7 @@ t_piece	*makepiece(char *str, char piece_letter)
 			piece->blockcoords[x] = (i >= 5) ? (i % 5) : i;
 			piece->blockcoords[y] = i / 5;
 			x += 2;
-			y =+ 2;
+			y += 2;
 		}
 		i++;
 	}
@@ -83,8 +83,8 @@ t_piece	*makepiece(char *str, char piece_letter)
 }
 
 /*
-** 
-** 
+** Passes the string to makepiece and assigns a letter to the piece
+** Return a linked list of piece structs
 */
 
 t_piece	*makelist(char *str, int size)
@@ -134,7 +134,7 @@ t_piece	*parser(char *filename)
 	if (bytecount > 544 || bytecount < 19)
 		return (NULL);
 	buf[bytecount] = '\0';
-	if (!validate_input(buf, bytecount))
+	if (!validate_input(bytecount, buf))
 		return (NULL);
 	return (makelist(buf, bytecount));
 }

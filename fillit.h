@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:12:38 by paw               #+#    #+#             */
-/*   Updated: 2022/01/24 10:09:11 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 10:35:30 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ t_piece	*parser(char *filename);
 int	validate_characters(char *tetri);
 int	validate_tetri(char *tetri);
 int	validate_input(int size, char *tetri);
+void	shift_x(t_piece *piece, int n);
+void	shift_y(t_piece *piece, int n);
 
 #endif
