@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:12:38 by paw               #+#    #+#             */
-/*   Updated: 2022/01/22 13:00:53 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 06:38:46 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,14 @@ int	min_map_size(t_piece *piecelist);
 int	count_pieces(t_piece *piecelist);
 void	print_map(t_map *map, int map_size);
 void	free_map(t_map *map, int map_size);
+
+void	free_piecelist(t_piece *list);
+t_piece	*upperleft_corner(t_piece *piece);
+t_piece	*makepiece(char *str, char piece_letter);
+t_piece	*makelist(char *str, int size);
+t_piece	*parser(char *filename);
+int	validate_characters(char *tetri);
+int	validate_tetri(char **tetri);
+int	validate_input(char *map);
 
 #endif
