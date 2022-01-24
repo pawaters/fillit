@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 13:38:51 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 14:42:36 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 14:52:25 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	assign_coords(char *str, t_piece *piece)
 	{
 		if (str[i] == '#')
 		{
-			if (piece->blockcoords[x] == i >= 5)
+			if (i >= 5)
 				piece->blockcoords[x] = (1 % 5);
 			else
 				piece->blockcoords[x] = i;
