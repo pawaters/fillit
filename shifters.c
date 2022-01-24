@@ -6,7 +6,7 @@
 /*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 14:03:52 by msilen            #+#    #+#             */
-/*   Updated: 2022/01/24 07:26:15 by msilen           ###   ########.fr       */
+/*   Updated: 2022/01/24 11:22:16 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ void	shift_y(t_piece *piece, int n)
 	piece->blockcoords[5] += n;
 	piece->blockcoords[7] += n;
 }
-

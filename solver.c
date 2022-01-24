@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paw <paw@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: msilen <msilen@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:07:05 by paw               #+#    #+#             */
-/*   Updated: 2022/01/24 09:52:42 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/24 11:26:15 by msilen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,20 @@
 int	in_bounds(t_piece *piece, int map_size, char axis)
 {
 	if (axis == 'y')
-		return (piece->blockcoords[1] + piece->y_offset < map_size &&
-				piece->blockcoords[3] + piece->y_offset < map_size &&
-				piece->blockcoords[5] + piece->y_offset < map_size &&
-				piece->blockcoords[7] + piece->y_offset < map_size);
-	else	
-		return (piece->blockcoords[0] + piece->x_offset < map_size &&
-				piece->blockcoords[2] + piece->x_offset < map_size &&
-				piece->blockcoords[4] + piece->x_offset < map_size &&
-				piece->blockcoords[6] + piece->x_offset < map_size);
+		return (piece->blockcoords[1] + piece->y_offset < map_size && \
+			piece->blockcoords[3] + piece->y_offset < map_size && \
+			piece->blockcoords[5] + piece->y_offset < map_size && \
+			piece->blockcoords[7] + piece->y_offset < map_size);
+	else
+		return (piece->blockcoords[0] + piece->x_offset < map_size && \
+			piece->blockcoords[2] + piece->x_offset < map_size && \
+			piece->blockcoords[4] + piece->x_offset < map_size && \
+			piece->blockcoords[6] + piece->x_offset < map_size);
 }
 
 /*
- * We check if there is any overlap by counting if we do find 8 '.' at the positions 
+ * We check if there is any overlap by counting if we do find 8 '.' 
+ * at the positions 
  * we would place the letter of the piece. 
 */
 
@@ -64,7 +65,8 @@ int	overlap(t_map *map, t_piece *piece)
 }
 
 /*
- * If there piece is not out of bounds and fits with the other pieces (no overlap), 
+ * If there piece is not out of bounds and fits with the other pieces 
+ * (no overlap), 
  * we place it our map, following the coordinates and offset of the piece.
 */
 
@@ -73,7 +75,7 @@ void	place(t_piece *piece, t_map *map, char letter)
 	int	i;
 	int	x;
 	int	y;
-	
+
 	i = 0;
 	x = 0;
 	y = 0;
@@ -87,7 +89,8 @@ void	place(t_piece *piece, t_map *map, char letter)
 }
 
 /*
- * The function that tests each tetrimino at top left position is in bounds or overlap.
+ * The function that tests each tetrimino at top left position
+ * is in bounds or overlap.
  * If all is good, goes to next tetrimino. 
  * If a check fails, it comes back one loop before, to try another position.
  * Or if all positions fail for that piece, the previous piece at another place
@@ -95,7 +98,7 @@ void	place(t_piece *piece, t_map *map, char letter)
 
 int	solve_map(t_map *map, t_piece *piece, int map_size)
 {
-	if(!piece)
+	if (!piece)
 		return (1);
 	piece->x_offset = 0;
 	piece->y_offset = 0;
@@ -103,7 +106,7 @@ int	solve_map(t_map *map, t_piece *piece, int map_size)
 	{
 		while (in_bounds(piece, map_size, 'x'))
 		{
-			if(!overlap(map, piece))
+			if (!overlap(map, piece))
 			{
 				place (piece, map, piece->piece_letter);
 				if (solve_map(map, piece->next, map_size))
@@ -130,7 +133,7 @@ int	solve_map(t_map *map, t_piece *piece, int map_size)
 void	solve(t_piece *piecelist)
 {
 	t_map	*map;
-	int	map_size;
+	int		map_size;
 
 	map_size = min_map_size(piecelist);
 	map = new_map(map_size);
