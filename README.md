@@ -18,19 +18,12 @@ As you can see, each tetrimino is represented with a letter.
 
 ## HOW DOES IT WORK?
 
-In 5 parts, and in a nutshell:
-1) Main: checks if one file only is given as argument, and performs some basic format checks on the input file.
-2) Parse: takes the input file and converts it in a structure we defined, which enables our program to work on it.
-3) Validate: makes all the checks on the input so no edge case is left.
-4) Solve: we create an initial empty square of size X, try to put the tetriminoes, and if it doesn't work, increase the size of the square and try again  more detail below)
-5) Output & clean up: prints the square with the solution, and frees the memory used we do not need anymore. 
+In 5 parts, and in summary, with reference to the c files dealing with each part where you will be able to find comments explaining in more detail the logic:
+1) **Main**: checks if one file only is given as argument, and performs some basic format checks on the input file.
+2) **Parse**: takes the input file and converts it in a structure we defined, which enables our program to work on it .
+3) **Validate**: makes all the checks on the input so no edge case is left.
+4) **Solve**: we create an initial empty square of size X, try to put the tetriminoes, and if it doesn't work, increase the size and try again.
+5) **Output & clean up**: prints the square with the solution, and frees the memory used we do not need anymore. 
 
-## ALGORITHM
-- create an initial map
-- is the piece in bounds?
-- does the piece overlap with another already set there?
-    if yes: then place it and try the next piece, until all is done.
-    if no: move the last piece by 1 and try again. if no piece works, increase the size of the square.
-- if still no solution, move last piece.
-This is done thanks to nested loops and recursion.
+
 
