@@ -8,20 +8,7 @@ For example: ./fillit valid1_test7
 ## WHAT DOES FILLIT DO:
 ### - Input: a text file with tetriminoes. Example:
 
-...#
-...#
-...#
-...#
-
-....
-....
-....
-####
-
-.###
-...#
-....
-....
+![Example img of input](https://myoctocat.com/assets/images/base-octocat.svg)
 
 ### - Output: gives back the smallest square that fits these tetriminoes
 
