@@ -3,6 +3,7 @@ Tetris algo. Make the smallest possible "square" with a given list of tetrominoe
 
 ## HOW TO RUN THE PROGRAM:
 ./fillit [input_file]
+
 For example: ./fillit valid1_test7
 
 ## WHAT DOES FILLIT DO:
