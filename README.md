@@ -18,12 +18,12 @@ As you can see, each tetrimino is represented with a letter.
 
 ## HOW DOES IT WORK?
 
-In 5 parts, and in summary, with reference to the c files dealing with each part where you will be able to find comments explaining in more detail the logic:
+In summary:
 1) **Main**: checks if one file only is given as argument, and performs some basic format checks on the input file.
 2) **Parse**: takes the input file and converts it in a structure we defined, which enables our program to work on it .
 3) **Validate**: makes all the checks on the input so no edge case is left.
 4) **Solve**: we create an initial empty square of size X, try to put the tetriminoes, and if it doesn't work, increase the size and try again.
 5) **Output & clean up**: prints the square with the solution, and frees the memory used we do not need anymore. 
 
-
+For more detail on the logic, please check the files and its comments.
 
