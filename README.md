@@ -12,11 +12,7 @@ For example: ./fillit valid1_test7
 
 ### - Output: gives back the smallest square that fits these tetriminoes
 
-ABBBB
-ACCC.
-A..C.
-A....
-.....
+![Example img of output](https://github.com/pawaters/fillit/blob/master/Example%20img%20of%20input.jpg)
 
 As you can see, each tetrimino is represented with a letter.
 
