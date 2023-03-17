@@ -1,8 +1,11 @@
 # fillit
-Tetris algo. Make the smallest possible "square" with a given list of tetrominoes, no external libraries.
+An algorithm I coded to make the smallest possible "square" with a given list of tetrominoes, with no external C libraries. 
 
 ## HOW TO RUN THE PROGRAM:
-./fillit [input_file]
+1) git clone https://github.com/pawaters/fillit
+2) open your terminal:
+cd fillit
+./fillit [input_file_of_your_choice]
 
 For example: ./fillit valid1_test7
 
