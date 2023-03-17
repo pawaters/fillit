@@ -1,5 +1,5 @@
 # fillit
-An algorithm I coded to make the smallest possible "square" with a given list of tetrominoes, with no external C libraries. 
+An algorithm to make the smallest possible "square" with a given list of tetrominoes, with no external C libraries. 
 
 ## HOW TO RUN THE PROGRAM:
 1) git clone https://github.com/pawaters/fillit
